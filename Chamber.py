@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 20 11:07:09 2020
-
-@author: geuk_mi
-"""
-
 import math
 import sys
 from FluidProperties import fluid_properties
@@ -65,42 +58,6 @@ class CombustionChamber:
 
     def calculateChamberParameters(self):
 
-        # self.diameter = self.config.d_cc * 1e-3
-        # self.length = self.config.l_cc * 1e-3
-        # self.contractionRatio = self.config.epsilon_c
-        # self.area = math.pi / 4 * math.pow(self.diameter, 2)
-
-        # self.p = self.config.p_cc
-        # self.combustionEfficiency = self.config.eta_cc
-        # self.p_theo = self.p / self.combustion_efficiency
-        # self.rof = self.config.rof_cc
-        # self.mDot_O2 = self.config.mDot_O2
-        # self.mDot_Fuel_PrimInj = self.config.mDot_F
-
-        # fluidProp = fluidProperties(self.config.fuel, self.config.T_if, self.config.T_io, self.p)
-        # self.fuelEnthalpie = fluidProp.H_F
-        # self.oxidizerEnthalpie = fluidProp.H_O
-
-        # self.T_theo = CEAFunctions.ceaIdealCombustionTemp(self.config.fuel, self.config.T_if, self.fuelEnthalpie,
-        #                                                   self.config.T_io, self.oxidizerEnthalpie, self.rof, self.p,
-        #                                                   self.contraction_ratio)
-        # self.T_combustion = self.T_theo * math.pow(self.combustion_efficiency, 2)
-        # solutionVec = CEAFunctions.ceaRealCharacteristics(self.config.fuel, self.config.T_if, self.H_F,
-        #                                                   self.config.T_io, self.H_O, self.T_combustion,
-        #                                                   self.rof, self.p, self.epsilon_cc)
-        # self.rho = solutionVec[0]
-
-        # self.MWg_Chamber = CEAFunctions.ceaGetMoleMassProduct(self.config.fuel, self.config.T_if, self.H_F,
-        #                                                       self.config.T_io, self.H_O, self.rof,
-        #                                                       self.p, self.epsilon_cc)
-        # self.MWg_Throat = CEAFunctions.ceaGetMoleMassProduct(self.config.fuel, self.config.T_if, self.H_F,
-        #                                                      self.config.T_io, self.H_O, self.rof, self.p,
-        #                                                      self.epsilon_cc, True)
-
-        #        self.meanVelocity = (self.mDot_O2 + self.mDot_O2/self.rof) / (self.rho * math.pi / 4 * self.area)
-        #        self.l_star = self.area * self.length / self.contractionRatio
-        #        self.theta = self.length / self.meanVelocity
-
         if ((not math.isnan(self.config.mDot_SF)) or (not math.isnan(self.config.mDot_WC))):
             if ((not math.isnan(self.config.mDot_SF)) and math.isnan(self.config.mDot_WC)):
                 self.T_additinalInjection = self.config.T_if
@@ -109,11 +66,7 @@ class CombustionChamber:
                 self.T_additinalInjection = self.config.T_wc
                 self.mDot_fuel_additional = self.config.mDot_WC
             else:
-                if (self.config.fuel == "CH4"):
-                    fld = "Methane"
-                elif (self.config.fuel == "H2"):
-                    fld = "Hydrogen"
-
+                fld = "Water"
                 self.h_mix = (self.config.mDot_SF * getRefPropValue('H', 'T', self.config.T_if, 'P', self.p * 100000, fld)
                               + self.config.mDot_WC * getRefPropValue('H', 'T', self.config.T_wc, 'P',  self.p * 100000, fld)) / (self.config.mDot_SF + self.config.mDot_WC)
 

@@ -1,0 +1,5 @@
+function []=ceaout
+
+fid = fopen('cea.out');
+
+C = textscan(fid,'%n')

@@ -7,27 +7,21 @@ Created on Mon Jan 20 13:05:00 2020
 
 import os, sys
 
-
 def ceaIdealCombustionTemp(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer properties (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("case=NBK3 ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel properties (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")
@@ -50,23 +44,18 @@ def ceaIdealCombustionTemp(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
 def ceaRealCharacteristics(fuel, T_iF, h_F, T_iO, h_O, T_cc, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("case=NBK3 ro eq\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + " t(k)=" + str(T_cc) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot rho, m, gam, son, mach\n")
     inputFile.write("end\n")
@@ -96,23 +85,18 @@ def ceaRealCharacteristics(fuel, T_iF, h_F, T_iO, h_O, T_cc, rof, p_cc, accat):
 def ceaIdealCombustionTempExtended(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")
@@ -139,23 +123,18 @@ def ceaIdealCombustionTempExtended(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat)
 def ceaGetCStar(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")
@@ -187,23 +166,18 @@ def ceaGetCStar(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
 def ceaGetChamberSpeedValues(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")
@@ -251,23 +225,18 @@ def ceaGetChamberSpeedValues(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
 def ceaGetSpecificHeatRatio(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")
@@ -302,23 +271,18 @@ def ceaGetSpecificHeatRatio(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat):
 def ceaGetMoleMassProduct(fuel, T_iF, h_F, T_iO, h_O, rof, p_cc, accat, throat=False):
     # Writing the input file
     os.chdir("CEAeinbindung")
-
+    # Oxidizer (Hydrogen Peroxide)
     inputFile = open("cea.inp", "w")
     inputFile.write("problem\n")
     inputFile.write("ro eq fac\n")
     inputString = "p(bar)=" + str(p_cc) + " o/f=" + str(rof) + " ac=" + str(accat) + "\n"
     inputFile.write(inputString)
-    inputString = "react ox=O2 (L)   moles=1. O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
+    inputString = "react ox=H2O2 (L)   moles=1. H 2 O 2  t(k)=" + str(T_iO) + " h(j)=" + str(h_O) + "\n"
     inputFile.write(inputString)
-
-    if (fuel == "CH4"):
-        inputString = "      fu=" + fuel + " moles=1. C 1 H 4  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only CH3 CH4 CH3OH CO CO2 COOH H HCO H2 HCHO H2 HCHO,formaldehyd HCOOH H2O OH O2\n")
-    elif (fuel == "H2"):
-        inputString = "      fu=" + fuel + " moles=1. H 2  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
-        inputFile.write(inputString)
-        inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
+    # Fuel (Water)
+    inputString = "      fu=" + fuel + " moles=1. H 2 O  t(k)=" + str(T_iF) + " h(j)=" + str(h_F) + "\n"
+    inputFile.write(inputString)
+    inputFile.write("only H2 O2 H2O OH H O H2O2 HO2 O3\n")
 
     inputFile.write("output trace=1.e-10 plot t\n")
     inputFile.write("end\n")

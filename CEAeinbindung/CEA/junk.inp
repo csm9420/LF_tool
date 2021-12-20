@@ -1,0 +1,6 @@
+prob
+rocket fac ac/at=15 tcest,k=3800 p,bar=60
+react 
+  fuel=CH4 wt=1 t,k=260
+  oxid=O2(L) wt=0.5
+ end

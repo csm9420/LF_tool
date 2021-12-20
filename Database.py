@@ -231,10 +231,8 @@ def getConfigFromXML(xmlName):
         except:
             pass
 
-    if (fuelType == "CH4"):
-        fuelName = "Methane"
-    elif (fuelType == "H2"):
-        fuelName = "Hydrogen"
+    if (fuelType == "H2O"):
+        fuelName = "Water"
     else:
         print("Invalid Fuel Type!")
         fuelName = ""

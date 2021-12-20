@@ -140,12 +140,12 @@ class FlowSolverInjector:
 
         # Set the fuel type correctly (for Coolprop)
         # TODO: More fuel types needed?
-        if fuel_type == 'H2':
-            fuel_type = 'Hydrogen'
+        if fuel_type == 'H2O':
+            fuel_type = 'Water'
 
         # Set the window cooling type correctly (for Coolprop)
-        if fluid_wc == 'H2':
-            fluid_wc = 'Hydrogen'
+        if fluid_wc == 'H2O':
+            fluid_wc = 'Water'
 
         # Define the settings file
         file = os.path.join(os.getcwd(), settings_file)
@@ -176,7 +176,7 @@ class FlowSolverInjector:
         #   However, if the injector part (the actual injector) uses p_cc as p_end (-> the pressure of the manifold in
         #   which the system is injecting), then it should be p_io and p_if for the feed system parts.
         if LOX_feed:
-            LOX_feed = calculate_elements_feed(path, 'LOX_feed', LOX_feed, p_feed_o1, p_feed_o2, T_feed_o1, T_feed_o2, p_io, p_cc, 'Oxygen')
+            LOX_feed = calculate_elements_feed(path, 'LOX_feed', LOX_feed, p_feed_o1, p_feed_o2, T_feed_o1, T_feed_o2, p_io, p_cc, 'Hydrogen Peroxide')
         if Fuel_feed:
             Fuel_feed = calculate_elements_feed(path, 'Fuel_feed', Fuel_feed, p_feed_f1, p_feed_f2, T_feed_f1, T_feed_f2, p_if, p_cc, fuel_type)
         if Secondary_fuel_injector:

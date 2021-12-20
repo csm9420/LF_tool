@@ -1,0 +1,204 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <!--
+This HTML is auto-generated from an M-file.
+To make changes, update the M-file and republish this document.
+      -->
+      <title>cea</title>
+      <meta name="generator" content="MATLAB 7.3">
+      <meta name="date" content="2007-11-08">
+      <meta name="m-file" content="cea"><style>
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head>
+   <body>
+      <div class="content">
+         <h2>Contents</h2>
+         <div>
+            <ul>
+               <li><a href="#2">Eingansdaten</a></li>
+               <li><a href="#3">Berechnung von Dichte und Schallgeschwindigkeit im D&uuml;senhals</a></li>
+               <li><a href="#4">Ben&ouml;tigter Massenstrom</a></li>
+            </ul>
+         </div><pre class="codeinput">clear
+</pre><h2>Eingansdaten<a name="2"></a></h2>
+         <p>Treibstoffe und ROF</p><pre class="codeinput">fuel = <span class="string">'CH4'</span>;
+oxid = <span class="string">'O2(L)'</span>;
+rof = 3.4; <span class="comment">% [-]</span>
+<span class="comment">% Kontraktionsverh&auml;ltnis und D&uuml;senhals</span>
+d_t = 28.0 * 0.001; <span class="comment">% [m]</span>
+A_t = pi() / 4 * d_t^2; <span class="comment">% [m^2]</span>
+acat = (pi() / 4 * 0.05^2) / A_t; <span class="comment">% [-]</span>
+<span class="comment">% Brennkammerdruck</span>
+pcc = 60; <span class="comment">% [bar]</span>
+</pre><h2>Berechnung von Dichte und Schallgeschwindigkeit im D&uuml;senhals<a name="3"></a></h2><pre class="codeinput">ceain(fuel,oxid,rof,pcc,acat);
+
+dos <span class="string">fcea2.exe</span>;
+<span class="comment">% ! fcea2.exe</span>
+
+C = ceaout;
+
+<span class="comment">% Dichte im D&uuml;senhals</span>
+index_rhostar = strmatch(<span class="string">'RHO'</span>,C{1,1}) + 7;
+rhostar = str2double(C{1,1}{index_rhostar,1}); <span class="comment">% [kg/m^3]</span>
+
+<span class="comment">% Schallgeschwindigkeit im D&uuml;senhals</span>
+index_a_t = strmatch(<span class="string">'SON'</span>,C{1,1}) + 4;
+a_t = str2double(C{1,1}{index_a_t,1}); <span class="comment">% [m/s]</span>
+</pre><pre class="codeoutput"> 
+ 
+ ENTER INPUT FILE NAME WITHOUT .inp EXTENSION. 
+   THE OUTPUT FILES FOR LISTING AND PLOTTING WILL HAVE 
+ THE SAME NAME WITH EXTENSIONS .out AND .plt RESPECTIVELY 
+ 
+ 
+</pre><h2>Ben&ouml;tigter Massenstrom<a name="4"></a></h2>
+         <p>Gesamt</p><pre class="codeinput">mdot = rhostar * a_t * A_t
+
+<span class="comment">% Sauerstoff</span>
+mdot_O2 = rof / (1 + rof) * mdot
+<span class="comment">% Anteil am m&ouml;glichen Gesamtoxidatormassenstrom am P6</span>
+mdot_O2_r = mdot_O2 / 1
+
+<span class="comment">% Methan</span>
+mdot_CH4 = mdot_O2 / rof
+<span class="comment">% Anteil am m&ouml;glichen Gesamtmethanmassenstrom (Haupt- und</span>
+<span class="comment">% Fensterk&uuml;hlmassenstrom) am P6</span>
+mdot_CH4 = mdot_CH4 / 0.4
+</pre><pre class="codeoutput">
+mdot =
+
+    1.9600
+
+
+mdot_O2 =
+
+    1.5146
+
+
+mdot_O2_r =
+
+    1.5146
+
+
+mdot_CH4 =
+
+    0.4455
+
+
+mdot_CH4 =
+
+    1.1137
+
+</pre><p class="footer"><br>
+            Published with MATLAB&reg; 7.3<br></p>
+      </div>
+      <!--
+##### SOURCE BEGIN #####
+clear
+
+%% Eingansdaten
+% Treibstoffe und ROF
+fuel = 'CH4';
+oxid = 'O2(L)';
+rof = 3.4; % [-]
+% Kontraktionsverhältnis und Düsenhals
+d_t = 28.0 * 0.001; % [m]
+A_t = pi() / 4 * d_t^2; % [m^2]
+acat = (pi() / 4 * 0.05^2) / A_t; % [-]
+% Brennkammerdruck
+pcc = 60; % [bar]
+
+%% Berechnung von Dichte und Schallgeschwindigkeit im Düsenhals
+ceain(fuel,oxid,rof,pcc,acat);
+
+dos fcea2.exe;
+% ! fcea2.exe 
+
+C = ceaout;
+
+% Dichte im Düsenhals
+index_rhostar = strmatch('RHO',C{1,1}) + 7;
+rhostar = str2double(C{1,1}{index_rhostar,1}); % [kg/m^3]
+
+% Schallgeschwindigkeit im Düsenhals
+index_a_t = strmatch('SON',C{1,1}) + 4;
+a_t = str2double(C{1,1}{index_a_t,1}); % [m/s]
+
+%% Benötigter Massenstrom
+% Gesamt
+mdot = rhostar * a_t * A_t
+
+% Sauerstoff
+mdot_O2 = rof / (1 + rof) * mdot
+% Anteil am möglichen Gesamtoxidatormassenstrom am P6
+mdot_O2_r = mdot_O2 / 1
+
+% Methan
+mdot_CH4 = mdot_O2 / rof
+% Anteil am möglichen Gesamtmethanmassenstrom (Haupt- und
+% Fensterkühlmassenstrom) am P6
+mdot_CH4 = mdot_CH4 / 0.4
+
+##### SOURCE END #####
+-->
+   </body>
+</html>

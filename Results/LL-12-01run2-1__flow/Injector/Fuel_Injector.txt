@@ -1,0 +1,15 @@
+type         noe       volume    length    area      massflow  dp        velocity  rho       sound_velocity   t * 1e-4  Z         M         C * 1e-7       K              
+Manifold     1         100.0     None      None      1.3328    0         None      30.449    1025.4251        None      None      None      3.4215         32017016.7008  
+Orifice      1         None      None      None      1.3328    29241.4893None      None      None             None      0.0122    None      None           None           
+Line         1         None      1775.0    706.8583  1.3328    None      62.2136   None      1022.7287        17.3555   0.4022    0.0608    None           None           
+Orifice      1         None      None      None      1.3328    210758.5107None      None      None             None      0.0879    None      None           None           
+Line         1         None      650.0     201.0619  1.3328    None      230.122   None      993.9741         6.5394    1.3741    0.2315    None           None           
+Orifice      1         None      None      None      1.3328    2797070.0 233.0038  None      None             None      1.1667    None      None           None           
+Line         1         None      18.8523   5026.5482 1.3328    None      10.5228   None      952.9013         0.1978    0.0527    0.011     None           None           
+Orifice      42        None      None      None      0.0317    29782.2237None      None      None             None      0.5217    None      None           None           
+Line         42        None      20.0      25.9181   0.0317    None      48.7841   None      951.2664         0.2102    10.2016   0.0513    None           None           
+Orifice      42        None      None      None      0.0317    81511.2185None      None      None             None      1.428     None      None           None           
+Line         42        None      8.0       15.708    0.0317    None      81.2909   None      947.5931         0.0844    16.7677   0.0858    None           None           
+Orifice      42        None      None      None      0.0317    1926771.4087None      None      None             None      33.7544   None      None           None           
+Line         42        None      9.5       3.8366    0.0317    None      486.0365  None      803.2547         0.1183    58.194    0.6051    None           None           
+Orifice      42        None      None      None      0.0317    3017931.368512.2971  None      None             None      52.87     None      None           None           

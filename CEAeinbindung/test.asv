@@ -1,0 +1,8 @@
+clear
+
+for i = 1:10
+p_BK = i * 10 * 1E5;
+ROF = 6;
+d_t = 28 * 1E-3;
+
+[rho_star(i),a_star(i)] = cea(p_BK,ROF,d_t);

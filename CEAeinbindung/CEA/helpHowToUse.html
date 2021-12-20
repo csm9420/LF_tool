@@ -1,0 +1,149 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!-- 11/14/2003 helpHowToUse.html  ; &nbsp;&nbsp;          -->
+<!-- 12/10/2003 hyphens - short, med, long;                -->
+<!-- 03/24/2004 Last update                                -->
+
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Minna Chao">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>CEAgui Help Menu -  How To Use CEAgui</title>
+
+   <style type="text/css">
+        <!-- Begain
+        body {background: #FFFFFF;
+            margin-left: 20;
+            text-align: left;
+            font-family: Times New Roman, Arial, Helvetica, Geneva, Swiss, Sunsans-Regular;
+            font-size: 12pt;}
+        .sm { margin-left: 40;}
+        .center { text-align: center; }
+        //  End -->
+    </style>
+</head>
+
+<body>
+<!--div class="center"><h2>CEAgui Help Menu</h2></div-->
+<div class="center"><h2>How To Use CEAgui</h2></div>
+
+<br>CEAgui is a graphical-user-interface for CEA2. &nbsp;&nbsp;It facilitates making 
+an input file, calling the executable, and listing the output. &nbsp;&nbsp;Most input 
+rules and definitions are given in the CEA manuals NASA RP-1311 Part I, 1994, 
+and NASA RP-1311 Part II, 1996.  
+
+<p><b>FILE NAMES</b>
+
+<p>The user picks a name for the input file. &nbsp;&nbsp;&nbsp;This file must have an ".inp" extension.  
+&nbsp;&nbsp;The output file name will have the same prefix except the extension is ".out"  
+&nbsp;&nbsp;Similarly, an optional output file with the extension ".plt" lists selected data for plotting. 
+&nbsp;&nbsp;For convenience, ".inp" files for each of the 14 examples in NASA RP-1311 Part II, 1996, are available 
+from the <b>File</b> menu.  &nbsp;&nbsp;At any time the user may either make a new file or modify 
+an existing file with the option to change the name. 
+
+<p>Note one major difference between CEA2 files and CEAgui files is that CEAgui input files 
+are for only one case whereas CEA2 input files may be a stack of any number of cases 
+(e.g. all of the 14 examples). &nbsp;&nbsp;Note: Results may vary a slightly from those published in 
+RP-1311 because the thermodynamic data have been updated since 1996. 
+
+<p><b>FILE MENU</b>
+<br>
+<ul>
+    <li><b>New</b> - Clears all input screens to the default settings.</li>
+    <li><b>Open</b> - Opens an existing CEA2 input file with extension ".inp".  
+    &nbsp;&nbsp;&nbsp;The CEAgui screens will be filled with the appropriate settings.</li>
+    <li><b>Open Examples</b> - Allows user to open any of the examples given in 
+    NASA RP-1311 Part II, 1996. &nbsp;&nbsp;These example input files are stored in files 
+    xEx1.inp, xEx2.inp,..., xEx14.inp. &nbsp;&nbsp;CEAgui may be used to revise the file.  
+    &nbsp;&nbsp;<b>Save As</b> may be used to save the revised file with user-selected name 
+    either before or after execution.</li>
+    <li><b>Save</b> - Allows user the save current input file with current name.</li>
+    <li><b>Save As</b> - Allows user to select name for the current file. </li>
+    <li><b>Exit</b> - Exits CEAgui.</li>
+</ul>
+
+
+<p><b>ACTIVITY MENU</b>
+<br>
+<ul>
+    <li><b>View current input file</b> - View the input file being created by CEAgui.</li> 
+    <li><b>Execute CEA2</b> - Execute the current input file.</li> 
+    <li><b>View output file</b> - View output file with extension ".out".</li>
+    <li><b>View optional plot file</b> - View optional file for plotting data 
+    with extension ".plt". &nbsp;&nbsp;&nbsp;Numerical values for selected parameters from 
+    the output file are listed in vertical columns.  
+    &nbsp;&nbsp;&nbsp;These same values are listed horizontally in the ".out" file.</li>
+</ul>    
+
+
+<p><b>CEA DATASETS IN TAB FORM </b>
+
+<p>The input data for each case are divided into six "datasets."
+&nbsp;&nbsp;CEAgui uses the six tabs listed below for entering these data. 
+&nbsp;&nbsp;The <b>Problem</b> and <b>Reactant</b> tabs must be completed before using 
+the optional <b>Only</b>, <b>Omit</b>, or <b>Insert</b> tabs. &nbsp;&nbsp;Clicking on another tab 
+closes the current tab. &nbsp;&nbsp;A closed tab may be revisited before execution. 
+
+<br>
+<ul>
+    <li><b>Problem</b> Dataset - lists type of problem and associated input. 
+        &nbsp;&nbsp;Relative amounts of fuel and oxidant may also be given here.</li> 
+    <li><b>Reactant</b> Dataset - includes information concerning the reactants. 
+        &nbsp;&nbsp;This tab must be completed before the optional tabs 
+        <b>Only</b>, <b>Omit</b>, or <b>Insert</b> are accessed.</li>
+    <li><b>Only</b> Dataset - option for user to indicate the <b>only</b> products to be considered. 
+        &nbsp;&nbsp;Do not use in conjunction with an <b>Omit</b> list.</li>
+    <li><b>Omit</b> Dataset - option for user to omit any of the possible default products. 
+        &nbsp;&nbsp;Do not use in conjunction with an <b>Only</b> list.</li> 
+    <li><b>Insert</b> Dataset - option for user to specify which condensed species to insert as possible 
+        products for the initial point. &nbsp;&nbsp;&nbsp;Sometimes convergence 
+        is not possible without the insertion of a condensed species. 
+        &nbsp;&nbsp;For this situation an error message will suggest inserting  
+        a possible condensed species. </li>
+    <li><b>Output</b> Dataset - Contains many optional parameters associated with output including 
+        transport properties, numerical units, debug points 
+        and variables to be listed in the ".plt" file </li>
+</ul>   
+
+
+
+<p><b>DATASET HELP MENUS </b>
+
+<p>Each screen has a <b>Help</b> menu to assist the user in filling in the data.
+
+<p><b>GETTING STARTED </b>
+<br>
+<ol>
+
+    <li>Click on <b>File</b> and open the example most closely representing your interest.  
+    &nbsp;&nbsp;Screens will be filled appropriately. &nbsp;&nbsp;Input file is xExN.inp 
+    where N is the example number in NASA RP-1311 Part II, 1996.</li>  
+    <li>Use the <b>Activity</b> menu to execute CEA2 and view the output.  
+    &nbsp;&nbsp;Because the thermodynamic data have been updated, you may notice small differences 
+    in the results compared with those in the manual.  
+    &nbsp;&nbsp;The output file is xEx<b>N</b>.out where <b>N</b> is the example number.</li>
+    <li>Using the tabs and screens and <b>Help</b> menus, make any changes 
+    you might like to try.  &nbsp;&nbsp;Screen changes will be saved as you move to 
+    next tab or operation.  &nbsp;&nbsp;Use the <b>Save As</b> option in the <b>File</b> menu to save 
+    the input file with a new name. &nbsp;&nbsp;Again, execute CEA2 and examine the output.</li>
+    <li>For new input, use <b>New</b> in the <b>File</b> menu.  
+    &nbsp;&nbsp;Fill in <b>Reactant</b> and <b>Problem</b> screens before the optional <b>Omit</b>, 
+    <b>Only</b>, or <b>Insert</b> screens.  
+    &nbsp;&nbsp;Follow instructions given in the <b>Help</b> menus.</li>
+</ol> 
+
+
+
+<!--hr width="95%">
+<div>
+Responsible NASA Official:
+	<a href="mailto:Bonnie.McBride@grc.nasa.gov" >Bonnie McBride</a> and
+	<a href="mailto:Michael.Zehe@grc.nasa.gov" >Dr. Michael J. Zehe</a>
+<br>NASA <a href="http://www.grc.nasa.gov/Doc/privacy.html">Privacy</a> and 
+     <a href="http://www.grc.nasa.gov/Doc/access.html">Accessibility</a> Statement
+<br>Web page curator: <a href="mailto:Minna.Chao@grc.nasa.gov">Minna Chao</a>
+<br>Last updated: March 24, 2004
+</div-->
+
+</body>
+</html>

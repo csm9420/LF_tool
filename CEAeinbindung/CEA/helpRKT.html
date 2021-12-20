@@ -1,0 +1,143 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<!-- 06/10/2002 helpRKT.html                                    -->
+<!-- 06/23/2003 Web Contents Accessibility ( section 508 )      -->
+<!-- 11/04/2003 Bonnie's version;<b><i>P<sub>inf</sub></i></b>  -->
+<!-- 11/14/2003 Help Button;&nbsp;&nbsp;                        -->
+<!-- 12/10/2003 RESET - deafult settings;                       -->
+<!-- 01/23/2004 Options: h/R;OPTIONAL USER-ASSIGNED ENTHALPY    -->
+<!-- 03/24/2004 Removed CLOSE button                            -->
+<!-- 05/13/2004 Finite Area -- TWO Ae/Ac changed to Ac/At       -->
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Minna Chao">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (WinNT; U) [Netscape]">
+   <title>CEAgui Help Menu -  Problem Dataset - Rocket Problem</title>
+
+   <style type="text/css">
+        <!-- Begain
+        body {background: #FFFFFF;
+            margin-left: 20;
+            text-align: left;
+            font-family: Times New Roman, Arial, Helvetica, Geneva, Swiss, Sunsans-Regular;
+            font-size: 12pt;}
+        .sm { margin-left: 40;}
+        .center { text-align: center; }
+        //  End -->
+    </style>
+</head>
+<body>
+
+<div class="center"><H3>CEAgui Help Menu -- Problem Dataset 
+<br>Rocket Problem (rkt) </H3>
+<br><a href="helpTOC.html">Table of Contents</a></div>
+<!--a href="helpProblem.html">Back to Problem Dataset</a-->
+
+<p>Theoretical rocket performance parameters can be calculated for either 
+infinite-area (IAC) or finite-area (FAC) combustors. &nbsp;&nbsp;Mixture thermodynamic 
+properties and composition can also be calculated for the combustor, throat, 
+and several selected exit points.   &nbsp;&nbsp;For the IAC option (fac = false), 
+there is an option to assume either chemical equilibrium for all points or 
+to freeze composition after combustion, throat, or any exit point.   
+&nbsp;&nbsp;For the FAC option (fac = true), only equilibrium calculations are allowed 
+because it is difficult to define freezing points.  &nbsp;&nbsp;An option to calculate thermal 
+transport properties is available for either case.
+
+<p>For equations, assumptions, and definitions, refer to Chapter 6, NASA RP-1311, 
+Part I, 1994. &nbsp;&nbsp;IAC examples 8, 11, 12, and 13 and FAC examples 9 and 10 were 
+taken from NASA RP-1311, Part II, 1996.
+
+<p>Use the <b>ENTER</b>, <b>RETURN</b>, or <b>TAB</b> key, or click on the next empty cell after each table entry.  
+ 
+<p><br><b>PRESSURE UNITS</b>
+<br>A selection of several units is available for initial pressure 
+<b>Pin</b> (<i>P<sub>inf</sub></i>  for IAC or <i>P<sub>inj</sub></i> for FAC), 
+namely bar (default); atm; psia; or mmHg.  &nbsp;&nbsp;The selected unit applies to all 
+the values listed. &nbsp;&nbsp;The estimated or assigned combustion temperature <b>Tc </b>
+may be selected as either Kelvin (default), Rankine, Celsius, 
+or Fahrenheit.   &nbsp;&nbsp;The default estimated value is 3800 K.
+
+<p><br><b>INITIAL PRESSURE</b>
+<br>Up to 16 values may be entered for the initial pressure 
+<b>Pin</b> ( <i>P<sub>inf</sub></i> for IAC or <i>P<sub>inj</sub></i> for FAC).  
+&nbsp;&nbsp;A complete rocket performance profile will be calculated for each value as 
+specified by the remaining input. 
+
+<p><br><b>COMBUSTION TEMPERATURE</b>
+<br>Assuming the same velocity (either zero or otherwise) at the combustion 
+chamber inlet, identical thermodynamic results are obtained for the combustion inlet 
+condition for both the IAC and FAC models.   &nbsp;&nbsp;Normally, combustion temperature is 
+obtained from the mixture enthalpy of the reactants.  &nbsp;&nbsp;For this case a temperature 
+estimate is required.   &nbsp;&nbsp;The default value of 3800 Kelvin will be used unless the user 
+chooses a different value.   &nbsp;&nbsp;The combustion point is an assigned enthalpy and temperature 
+problem that sometimes requires inserting possible condensed species with the initial 
+composition estimates-see the <b>Help</b> menu for <b>Insert</b> dataset.
+
+<p>Sometimes the temperature is known and the value may be set by the user.
+
+<p><br><b>INFINITE-AREA COMBUSTOR</b>
+<br> The user may choose for all calculated points to assume chemical equilibrium 
+or he may choose to have the products frozen after a specified point.   
+&nbsp;&nbsp;Both of these options may be selected for any run.   
+&nbsp;&nbsp;Freeze points selections are <b>combustion</b>, <b>throat</b>, or <b>exit1</b>. 
+&nbsp;&nbsp;The <b>exit1</b> value will be one of the <b>Optional Exit Points</b> 
+described below.   &nbsp;&nbsp;CEAgui will pick the first exit value listed starting 
+with the left column for <b>Pin</b>/<b>Pe</b>. &nbsp;&nbsp; Example12 illustrates freezing composition at the throat.  
+
+<p>All points are isentropic with respect to the combustion point.
+
+<p><br><b>FINITE-AREA COMBUSTOR</b>
+<br>Because of the difficulty in defining the freeze point for this option, 
+only equilibrium calculations are permitted. 
+
+<p>The chamber in the FAC model is assumed to have a constant cross-sectional area. 
+&nbsp;&nbsp;In this chamber combustion is a non-isentropic, irreversible process.   
+&nbsp;&nbsp;During the burning process, part of the energy released is used to 
+raise the entropy, and the pressure drops.   
+&nbsp;&nbsp;Expansion in the nozzle is assumed to be isentropic.
+
+<p>One of two input parameters is required, either the contraction ratio 
+<i>A<sub>c</sub></i>/<i>A<sub>t</sub></i> or the mass flow rate per combustor area  <i>A<sub>c</sub></i>.
+&nbsp;&nbsp;Output includes values for <i>A<sub>c</sub></i>/<i>A<sub>t</sub></i> and  
+<i>P<sub>inj</sub></i>/<i>P<sub>inf</sub></i> in addition to properties and 
+composition for the injector, combustor, throat, and optional exit points. 
+
+<p><br><b>OPTIONAL USER-ASSIGNED ENTHALPY</b>
+<br>Total enthalpy for the combustor will be calculated from the enthalpies of the individual 
+reactant values unless the user chooses to assign a value. &nbsp;&nbsp;This value is h/R  in units of 
+(g-mol)K/(g of mixture).
+
+<p><br><b>OPTIONAL EXIT CONDITIONS</b>
+<br>Three columns are available for optional exit points in the nozzle.  
+&nbsp;&nbsp;The left column is for assigned pressure ratios <b>Pin</b>/<b>Pe</b> 
+where <b>Pin</b> is injector pressure <i>P<sub>inj</sub></i> 
+for FAC problems and  <i>P<sub>inf</sub></i> for IAC models.  
+&nbsp;&nbsp;<b>Pe</b> is the exit pressure <i>P<sub>e</sub></i>.   
+&nbsp;&nbsp;The middle column is for subsonic area ratios <i>A<sub>e</sub></i>/<i>A<sub>t</sub></i>  
+and the right column is for supersonic area ratios <i>A<sub>e</sub></i>/<i>A<sub>t</sub></i>  
+(i.e. exit area relative to the throat area).  &nbsp;&nbsp;Up to 13 values may be entered into each column. 
+
+<p><b>HELP</b>
+<br>The <b>Help</b> button displays the help menu for the Rocket problem.
+
+<p><b>SAVE</b>
+<br>The <b>Save</b> button saves the data and returns to the <b>Problem</b> dataset. 
+
+<p><b>RESET</b>
+<br>The <b>Reset</b> button resets the data to the default settings.
+
+<p><div class="center"><a href="helpTOC.html">Table of Contents</a></div>
+<!--p><div class="center"><a href="helpProblem.html">Back to Problem Dataset</a></div-->
+
+<!--div>
+Responsible NASA Official:
+	<a href="mailto:Bonnie.McBride@grc.nasa.gov" >Bonnie McBride</a> and
+	<a href="mailto:Michael.Zehe@grc.nasa.gov" >Dr. Michael J. Zehe</a>
+<br>NASA <a href="http://www.grc.nasa.gov/Doc/privacy.html">Privacy</a> and 
+     <a href="http://www.grc.nasa.gov/Doc/access.html">Accessibility</a> Statement
+<br>Web page curator: <a href="mailto:Minna.Chao@grc.nasa.gov">Minna Chao</a>
+<br>Last updated: May 13, 2004.
+</div-->
+
+</body>
+</html>

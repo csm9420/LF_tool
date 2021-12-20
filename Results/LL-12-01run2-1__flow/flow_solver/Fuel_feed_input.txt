@@ -1,0 +1,4 @@
+type           	Da	Di	Dh	A	L	V	k	zeta	number_of_elements
+Manifold       	nan	nan	nan	nan	nan	1e+02	nan	nan	1
+Line           	3e+01	0.0	3e+01	7.1e+02	1.8e+03	nan	0.0015	0.5	1
+Line           	1.6e+01	0.0	1.6e+01	2e+02	6.5e+02	nan	0.0015	0.5	1

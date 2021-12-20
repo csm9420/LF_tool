@@ -1,0 +1,8 @@
+problem
+ro eq fac
+p(bar)=47.94899 o/f=2 ac=2.56
+react ox=O2 (L)   moles=1. O 2  t(k)=112.7279 h(j)=-11.622672205877318
+      fu=H2 moles=1. H 2  t(k)=94.777 h(j)=-5.553680422414317
+only H2 O2 H2O OH H O H2O2 HO2 O3
+output trace=1.e-10 plot t
+end
